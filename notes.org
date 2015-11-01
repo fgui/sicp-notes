@@ -341,8 +341,9 @@ space O(1)
 Linear in b O(n)
 
 use doble and halve
-
+see clojure code: [[code/clj/scr/sicp/ex1_17.clj]]
 *** exercise 1.18 [todo]
+see previous code: [[code/clj/scr/sicp/ex1_17.clj]]
 *** exercise 1.19 [todo]
 
 *** 1.2.5 Greatest Common Divisor
