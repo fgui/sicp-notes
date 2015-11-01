@@ -387,7 +387,7 @@ b^4 = b^2 * b^2
 ...
 #+END_SRC
 
-#+BEGIN_SRC scheme -n
+#+BEGIN_SRC clojure -n
 (defn fast-expt [b n]
   (cond (= n 0)
         1
