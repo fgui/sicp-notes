@@ -255,17 +255,15 @@ branch:
 
 *** exercise 1.15 [todo]
 
-#+BEGIN_SRC
+#+BEGIN_SRC scheme-mode -n
 (define (cube x) (* x x x))
 (define (p x) (- (* 3 x) (* 4 (cube x))))
 (define (sine angle)
     (if (not (> (abs angle) 0.1))
          angle
          (p (sine (/ angle 3.0)))))
-
 #+END_SRC
-#+BEGIN_ASCII
-
+#+BEGIN_SRC
 a)
 (sine 12.5)
 (p (sine 4.16))
@@ -284,18 +282,18 @@ spaces recursive O(n)
 steps O(log n)
 (12.5 => 5) (1000 => 10) (10000 => 12) ...
 first value steps => n / (3 ^ steps) < 0.01
-#+END_ASCII
+#+END_SRC
 
 *** 1.2.4 Exponentiation
-#+BEGIN_QUOTE
+#+BEGIN_SRC
 b^n = b * b^(n-1)
 
 b^2 = b * b
 b^4 = b^2 * b^2
 ...
-#+END_QUOTE
+#+END_SRC
 
-#+BEGIN_SRC
+#+BEGIN_SRC scheme-mode -n
 (defn fast-expt [b n]
   (cond (= n 0)
         1
