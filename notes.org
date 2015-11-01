@@ -275,7 +275,7 @@ phi = 1 + root(5) / 2
 #+END_SRC
 
 **** 1.2.3 Orders of Growth (O)
-O (theta)
+\theta (theta)
 
 R(n) resources required
 
@@ -286,9 +286,9 @@ on.
 #+END_QUOTE
 
 
-- Lineal recursive : Space O(n) Steps O(n)
-- Lineal iterative : Space O(1) Steps O(n)
-- Tree recursive : Space O(n) Steps O(phi^n)
+- Lineal recursive : Space \theta(n) Steps \theta(n)
+- Lineal iterative : Space \theta(1) Steps \theta(n)
+- Tree recursive : Space \theta(n) Steps \theta(\phi^n)
 
 **** exercise 1.14
 
