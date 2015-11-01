@@ -274,7 +274,7 @@ phi = 1 + root(5) / 2
 (defn fib[n] (+ (fib (- n 2) (fib (- n 1)))))
 #+END_SRC
 
-**** 1.2.3 Orders of Growth (O)
+**** 1.2.3 Orders of Growth
 \theta (theta)
 
 R(n) resources required
@@ -396,8 +396,8 @@ b^4 = b^2 * b^2
         :else
         (* b (fast-expt b (dec n)))))
 
-steps O(log n)
-space O(1)
+steps \theta(log n)
+space \theta(1)
 #+END_SRC
 
 **** exercise 1.16 [todo]
@@ -407,9 +407,9 @@ space O(1)
   (if (= b 0)
       0
 #+END_SRC
-Linear in b O(n)
+Linear in b \theta(n)
 
-use double and halve to implement O(log n)
+use double and halve to implement \theta(log n)
 
 see clojure code: [[code/clj/src/sicp/ex1_17.clj]]
 
@@ -436,7 +436,7 @@ Euclid's Algorithm:
       (gcd b (remainder a b))))
 #+END_SRC
 
-O(log n) & iterative
+\theta(log n) & iterative
 
 **** exercise 1.20
 #calls to remainder for (gcd 206 40) in:
@@ -474,9 +474,9 @@ each remainder is evaluated for test and at the end to calculate result.
 
 **** 1.2.6 Example: Testing for Primality
 
-O(root(n)) -> divisor btw 1 and root (n)
+\theta(root(n)) -> divisor btw 1 and root (n)
 
-O(log n) -> probabilistic algorithm (Fermat test)
+\theta(log n) -> probabilistic algorithm (Fermat test)
 
 Probabilistic methods/algorithms
 
