@@ -189,22 +189,23 @@ Tree -> to compute n! we need exponential e^n steps (time)
 Recursive -> to compute n! we need n space (memory)
 
 *** exercise 1.11
-code/clj/src/sicp/ex1_11
+write function recursive and then iterative
+[[code/clj/src/sicp/ex1_11.clj]]
 
 *** exercise 1.12 Pascal's triangle
-code/clj/src/sicp/ex1_12
+calculate position Pascal's triangle.
+[[code/clj/src/sicp/ex1_12.clj]]
 
 *** exercise 1.13 [todo]
 #+BEGIN_SRC
+Prove:
+fib(n) = (int) phi^n/root(5)
+phi = 1 + root(5) / 2
 
-[maths]
 0 1 1 2 3 5 8 13 21 34 55 89
 
 (defn fib[n] (+ (fib (- n 2) (fib (- n 1)))))
 
-fib(n) = (int) phi^n/root(5)
-
-phi = 1 + root(5) / 2
 #+END_SRC
 
 *** 1.2.3 Orders of Growth (O)
@@ -277,7 +278,7 @@ branch:
 #+END_SRC
 
 
-*** exercise 1.15 [todo]
+*** exercise 1.15
 
 #+BEGIN_SRC scheme-mode -n
 (define (cube x) (* x x x))
@@ -337,6 +338,10 @@ space O(1)
   (if (= b 0)
       0
 #+END_SRC
+Linear in b O(n)
+
+use doble and halve
+
 *** exercise 1.18 [todo]
 *** exercise 1.19 [todo]
 
