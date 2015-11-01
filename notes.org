@@ -340,10 +340,15 @@ space O(1)
 #+END_SRC
 Linear in b O(n)
 
-use doble and halve
-see clojure code: [[code/clj/scr/sicp/ex1_17.clj]]
-*** exercise 1.18 [todo]
-see previous code: [[code/clj/scr/sicp/ex1_17.clj]]
+use doble and halve to implement O(log n)
+
+see clojure code: [[code/clj/src/sicp/ex1_17.clj]]
+
+*** exercise 1.18
+implement 1.17 exponential iterative
+
+see previous code: [[code/clj/src/sicp/ex1_17.clj]]
+
 *** exercise 1.19 [todo]
 
 *** 1.2.5 Greatest Common Divisor
