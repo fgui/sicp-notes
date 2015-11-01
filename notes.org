@@ -255,14 +255,47 @@ branch:
 
 *** exercise 1.15 [todo]
 
-*** 1.2.4 Exponentiation
+#+BEGIN_SRC
+(define (cube x) (* x x x))
+(define (p x) (- (* 3 x) (* 4 (cube x))))
+(define (sine angle)
+    (if (not (> (abs angle) 0.1))
+         angle
+         (p (sine (/ angle 3.0)))))
 
+#+END_SRC
+#+BEGIN_ASCII
+
+a)
+(sine 12.5)
+(p (sine 4.16))
+(p (p (sine 1.39)))
+(p (p (p (sine 0.46))))
+(p (p (p (p (sine 0.15)))))
+(p (p (p (p (p (sine 0.05))))))
+(p (p (p (p (p 0.05)))))
+
+12.5 / (3^5) = 0.049
+5 times
+
+b)
+spaces recursive O(n)
+
+steps O(log n)
+(12.5 => 5) (1000 => 10) (10000 => 12) ...
+first value steps => n / (3 ^ steps) < 0.01
+#+END_ASCII
+
+*** 1.2.4 Exponentiation
+#+BEGIN_QUOTE
 b^n = b * b^(n-1)
 
 b^2 = b * b
 b^4 = b^2 * b^2
 ...
+#+END_QUOTE
 
+#+BEGIN_SRC
 (defn fast-expt [b n]
   (cond (= n 0)
         1
@@ -271,10 +304,17 @@ b^4 = b^2 * b^2
         :else
         (* b (fast-expt b (dec n)))))
 
-O(log n)
+steps O(log n)
+space O(1)
+#+END_SRC
 
 *** exercise 1.16 [todo]
-*** exercise 1.17 [todo]
+*** exercise 1.17
+#+BEGIN_SRC
+(define (* a b)
+  (if (= b 0)
+      0
+#+END_SRC
 *** exercise 1.18 [todo]
 *** exercise 1.19 [todo]
 
@@ -285,6 +325,43 @@ be the largest integer that divides both a and b with no remainder.
 Euclid's Algorithm:
 (gcd a b) is the same as (gcd b r) where r is the reminder or (/ a b)
 
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+
+O(log n) & iterative
+
+*** exercise 1.20 [todo]
+normal-order of evaluation
+applicative-order of evaluation
+
+applicative-order
+(gcd 206 40)
+(gcd 40 (remainder 206 40))
+(gcd 40 6)
+(gcd 6 (remainder 40 6))
+(gcd 6 4)
+(gcd 4 (remainder 6 4))
+(gcd 4 2)
+(gcd 2 (reminder 4 2))
+(gcd 2 0)
+2
+[4 remainders]
+
+normal-order ?? [todo]
+(gcd 206 40)
+(gcd 40 (remainder 206 40))
+(gcd (remainder 206 40) (remainder 40 (remainder 206 40)))
+...
+
+
 *** 1.2.6 Example: Testing for Primality
+
+O(root(n)) -> divisor btw 1 and root (n)
+
+O(log n) -> probabilistic algorithm (Fermat test)
+
+Probabilistic methods/algorithms
 
 ** 1.3 Formulating Abstractions with Higher-Order Procedures
