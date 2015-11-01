@@ -210,11 +210,16 @@ An interpreter/compiles tail-recursive implementation executes an
 ;;3
 #+END_SRC
 
-[hl] The process uses a number of steps that grows exponentially with
+#+BEGIN_QUOTE
+The process uses a number of steps that grows exponentially with
 the input. On the other hand, the space required grows only linearly
 with the input
-[hl] The number of steps required by a tree-recursive process will be
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+The number of steps required by a tree-recursive process will be
 proportional to the number of nodes in the tree
+#+END_QUOTE
 
 [my understanding]
 - Tree -> to compute n! we need exponential e^n steps (time)
@@ -222,13 +227,16 @@ proportional to the number of nodes in the tree
 
 **** exercise 1.11
 write function recursive and then iterative
+
 [[code/clj/src/sicp/ex1_11.clj]]
 
 **** exercise 1.12 Pascal's triangle
 calculate position Pascal's triangle.
+
 [[code/clj/src/sicp/ex1_12.clj]]
 
 **** exercise 1.13 [todo]
+
 #+BEGIN_SRC
 Prove:
 fib(n) = (int) phi^n/root(5)
@@ -237,25 +245,27 @@ phi = 1 + root(5) / 2
 0 1 1 2 3 5 8 13 21 34 55 89
 
 (defn fib[n] (+ (fib (- n 2) (fib (- n 1)))))
-
 #+END_SRC
 
 **** 1.2.3 Orders of Growth (O)
 O (theta)
+
 R(n) resources required
 
-[hl] R(n) might measure the number of internal storage registers
+#+BEGIN_QUOTE
+R(n) might measure the number of internal storage registers
 used, the number of elementary machine operations performed, and so
 on.
+#+END_QUOTE
 
-Lineal recursive : Space O(n) Steps O(n)
-Lineal iterative : Space O(1) Steps O(n)
-Tree recursive : Space O(n) Steps O(phi^n)
+
+- Lineal recursive : Space O(n) Steps O(n)
+- Lineal iterative : Space O(1) Steps O(n)
+- Tree recursive : Space O(n) Steps O(phi^n)
 
 **** exercise 1.14
 
-#+BEGIN_SRC
-
+#+BEGIN_SRC scheme
 (define (count-change amount)
    (cc amount 5))
 (define (cc amount kinds-of-coins)
@@ -265,15 +275,16 @@ Tree recursive : Space O(n) Steps O(phi^n)
                   (cc (- amount (first-denomination kinds-of-coins)) kinds-of-coins)))))
 
 (define (first-denomination kinds-of-coins)
-(cond ((= kinds-of-coins 1) 1)
-((= kinds-of-coins 2) 5)
-((= kinds-of-coins 3) 10)
-((= kinds-of-coins 4) 25)
-((= kinds-of-coins 5) 50)))
+     (cond ((= kinds-of-coins 1) 1)
+           ((= kinds-of-coins 2) 5)
+           ((= kinds-of-coins 3) 10)
+           ((= kinds-of-coins 4) 25)
+           ((= kinds-of-coins 5) 50)))
+
 
 tree:
 
-                  (count-change 11)
+                          (count-change 11)
                                (cc 11 5)
                  (cc 11 4)   <-         ->   (cc -39 5)
          (cc 11 3)<-    -> (cc -14 4)             0
@@ -309,10 +320,9 @@ branch:
 1
 #+END_SRC
 
-
 **** exercise 1.15
 
-#+BEGIN_SRC scheme-mode -n
+#+BEGIN_SRC scheme -n
 (define (cube x) (* x x x))
 (define (p x) (- (* 3 x) (* 4 (cube x))))
 (define (sine angle)
@@ -320,8 +330,8 @@ branch:
          angle
          (p (sine (/ angle 3.0)))))
 #+END_SRC
-#+BEGIN_SRC
-a)
+#+BEGIN_SRC scheme
+;; a
 (sine 12.5)
 (p (sine 4.16))
 (p (p (sine 1.39)))
@@ -333,7 +343,7 @@ a)
 12.5 / (3^5) = 0.049
 5 times
 
-b)
+;; b
 spaces recursive O(n)
 
 steps O(log n)
