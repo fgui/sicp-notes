@@ -438,7 +438,7 @@ Euclid's Algorithm:
 
 O(log n) & iterative
 
-**** exercise 1.20 [todo]
+**** exercise 1.20
 #calls to remainder for (gcd 206 40) in:
 - normal-order of evaluation
 - applicative-order of evaluation
@@ -459,13 +459,17 @@ O(log n) & iterative
 
 #+END_SRC
 
-***** normal-order ?? [todo]
-what happens with *if*?
+***** normal-order
 #+BEGIN_SRC scheme
 (gcd 206 40)
+(if (= 40 0) 206 (gcd 40 (remainder 206 40))
 (gcd 40 (remainder 206 40))
+(if (= (remainder 206 40) 0) (remainder 206 40) (gcd (remainder 206 40) (remainder 40 (remainder 206 40))))
 (gcd (remainder 206 40) (remainder 40 (remainder 206 40)))
 ...
+
+total remainder evaluate 4 "if" + 4 remainders.
+each remainder is evaluated for test and at the end to calculate result.
 #+END_SRC
 
 **** 1.2.6 Example: Testing for Primality
