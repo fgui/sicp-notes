@@ -275,6 +275,7 @@ phi = 1 + root(5) / 2
 #+END_SRC
 
 **** 1.2.3 Orders of Growth
+[[https://en.wikipedia.org/wiki/Big_O_notation][Big O Notation(wikipedia)]]
 \theta (theta)
 
 R(n) resources required
