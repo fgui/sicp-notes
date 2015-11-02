@@ -262,7 +262,7 @@ calculate position Pascal's triangle.
 
 [[code/clj/src/sicp/ex1_12.clj]]
 
-**** exercise 1.13 [todo]
+**** exercise 1.13 [someday maybe]
 
 #+BEGIN_SRC
 Prove:
@@ -401,7 +401,6 @@ steps \theta(log n)
 space \theta(1)
 #+END_SRC
 
-**** exercise 1.16 [todo]
 **** exercise 1.17
 #+BEGIN_SRC scheme
 (define (* a b)
@@ -418,8 +417,6 @@ see clojure code: [[code/clj/src/sicp/ex1_17.clj]]
 implement 1.17 exponential iterative
 
 see previous code: [[code/clj/src/sicp/ex1_17.clj]]
-
-**** exercise 1.19 [todo]
 
 **** 1.2.5 Greatest Common Divisor
 #+BEGIN_QUOTE
@@ -481,7 +478,7 @@ each remainder is evaluated for test and at the end to calculate result.
 
 Probabilistic methods/algorithms
 
-**** exercise 1.21 [todo]
+**** exercise 1.21 [someday maybe]
 #+BEGIN_SRC
 (define (smallest-divisor n) (find-divisor n 2))
 
@@ -495,19 +492,34 @@ Probabilistic methods/algorithms
 #+END_SRC
 smallest-divisor of 199,1999,19999?
 
-**** exercise 1.22 [todo]
-search-for-primes
-**** exercise 1.23 [todo]
-improve smallest-divisor
-**** exercise 1.24 [todo]
-1.22 with fast-prime
-**** exercise 1.25 [todo]
-
-**** exercise 1.26 [todo]
-
-**** exercise 1.27 [todo]
+**** exercise 1.27 [someday maybe]
 Prove (run test) Carmichael numbers fool the Fermat test.
-**** exercise 1.28 [todo]
+**** exercise 1.28 [someday maybe]
 Write Miller-Rabin test (Fermat test variation that can't be fooled)
 
 *** 1.3 Formulating Abstractions with Higher-Order Procedures
+- procedures: abstractions that describe compound operations on parameters
+#+BEGIN_QUOTE
+build abstractions by assigning names to common patterns and then to work
+in terms of the abstractions directly
+#+END_QUOTE
+#+BEGIN_QUOTE
+Procedures that
+manipulate procedures are called higher-order procedures .
+#+END_QUOTE
+**** 1.3.1 Procedures as Arguments
+#+BEGIN_QUOTE
+The presence of such a common pattern is strong evidence that there is
+a useful abstraction waiting to be brought to the surface.
+#+END_QUOTE
+#+BEGIN_SRC scheme
+;;summation of a series
+(define (sum term a next b)
+    (if (> a b)
+        (+ (term a)
+        (sum term (next a) next b))))
+#+END_SRC
+**** 1.3.2 Contructing Procedures Using lambda \lambda
+***** Using *let* to create local variables
+**** 1.3.3 Procedures as General Methods
+**** 1.3.4 Procedures as Returned Values
