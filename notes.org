@@ -505,7 +505,7 @@ in terms of the abstractions directly
 #+END_QUOTE
 #+BEGIN_QUOTE
 Procedures that
-manipulate procedures are called higher-order procedures .
+manipulate procedures are called higher-order procedures.
 #+END_QUOTE
 **** 1.3.1 Procedures as Arguments
 #+BEGIN_QUOTE
@@ -520,6 +520,63 @@ a useful abstraction waiting to be brought to the surface.
         (sum term (next a) next b))))
 #+END_SRC
 **** 1.3.2 Contructing Procedures Using lambda \lambda
-***** Using *let* to create local variables
+***** Using *let* to create local variable
+#+BEGIN_QUOTE
+In general, lambda is used to create procedures in the same way as
+define , except that no name is specified for the procedure:
+#+END_QUOTE
+#+BEGIN_SRC scheme
+(lambda ( ⟨ formal-parameters ⟩ ) ⟨ body ⟩ )
+#+END_SRC
+
+- Using \lambda to define local variables.
+#+BEGIN_SRC clojure
+;;fn to define local variables
+(defn sum-squares [a b]
+  ((fn [square-a square-b]
+    (+ square-a square-b))
+   (* a a) (* b b)))
+
+;;let to define local variables
+(defn sum-squares [a b]
+  (let [square-a a
+        square-b b]
+       (+ square-a square-b)))
+
+#+END_SRC
+- Syntactic sugar for the underlying \lambda
+#+BEGIN_SRC scheme
+(let (( ⟨var 1 ⟩
+( ⟨var 2 ⟩ ⟨exp 1 ⟩ )
+⟨exp 2 ⟩ )
+( ⟨var n ⟩ ⟨exp n ⟩ ))
+...
+⟨ body ⟩ )
+#+END_SRC
+**** exercise 1.34
+#+BEGIN_SRC scheme
+(define (f g) (g 2))
+
+(f f)
+;; substitution:
+(f 2)
+(2 2) ;; error 2 is not an operator
+
+#+END_SRC
 **** 1.3.3 Procedures as General Methods
 **** 1.3.4 Procedures as Returned Values
+***** Abstractions and first-class procedures
+#+BEGIN_QUOTE
+Elements with
+the fewest restrictions are said to have first-class status. Some of the
+“rights and privileges” of first-class elements are:
+
+- They may be named by variables.
+- They may be passed as arguments to procedures.
+- They may be returned as the results of procedures.
+- They may be included in data structures.
+
+Lisp, unlike other common programming languages, awards procedures
+full first-class status. This poses challenges for efficient implementation,
+but the resulting gain in expressive power is enormous.
+#+END_QUOTE
