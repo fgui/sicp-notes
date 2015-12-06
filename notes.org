@@ -641,3 +641,62 @@ see clojure code: [[code/clj/src/sicp/ex2_54.clj]]
 ''quote hola ;; (quote hola)
 #+END_SRC
 *** 2.3.2 Example: Symbolic Differentiation
+#+BEGIN_QUOTE
+Let us assume that we already have procedures
+to implement the following selectors, constructors, and predicates
+#+END_QUOTE
+**** Representing algebraic expressions
+#+BEGIN_QUOTE
+straightforward choice is to use the same
+parenthesized prefix notation that Lisp uses for combinations; that is,
+to represent ax + b as (+ (* a x) b)
+#+END_QUOTE
+
+*** 2.3.3 Example: Representing Sets
+
+different representations:
+- unordered list
+- ordered list
+- binary tree (balanced)
+#+BEGIN_SRC Scheme
+;;binary tree (entry, tree left, tree right)
+(define (entry tree) (car tree))
+(define (left-branch tree) (cadr tree))
+(define (right-branch tree) (caddr tree))
+(define (make-tree entry left right)
+  (list entry left right))
+#+END_SRC
+
+#+BEGIN_QUOTE
+“Quick and dirty”.
+Later on, the data representation can be modified to be more sophisticated.
+If the data base is accessed in terms of abstract selectors and constructors,
+this change in representation will not require any changes to
+the rest of the system.
+#+END_QUOTE
+
+*** 2.3.4 Example: Huffman Encoding Trees
+#+BEGIN_SRC Scheme
+
+(define (make-leaf symbol weight) (list 'leaf symbol weight))
+(define (leaf? object) (eq? (car object) 'leaf))
+(define (symbol-leaf x) (cadr x))
+(define (weight-leaf x) (caddr x))
+
+(define (make-code-tree left right)
+(list left
+    right
+    (append (symbols left) (symbols right))
+    (+ (weight left) (weight right))))
+
+(define (left-branch tree) (car tree))
+(define (right-branch tree) (cadr tree))
+(define (symbols tree)
+  (if (leaf? tree)
+      (list (symbol-leaf tree))
+      (caddr tree)))
+(define (weight tree)
+  (if (leaf? tree)
+      (weight-leaf tree)
+      (cadddr tree)))
+#+END_SRC
