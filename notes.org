@@ -700,3 +700,55 @@ the rest of the system.
       (weight-leaf tree)
       (cadddr tree)))
 #+END_SRC
+** 2.4 Multiple Representations for Abstract Data
+#+BEGIN_QUOTE
+Data abstraction, a methodology for structuring
+systems in such a way that much of a program can be specified indepen-
+dent of the choices involved in implementing the data objects that the
+program manipulates
+#+END_QUOTE
+#+BEGIN_QUOTE
+generic procedures: procedures that can operate on
+data that may be represented in more than one way
+#+END_QUOTE
+#+BEGIN_QUOTE
+data objects
+that have type tags , that is, data objects that include explicit information
+about how they are to be processed
+#+END_QUOTE
+*** 2.4.1 Representation for complex numbers
+2 representations for the same data abstraction.
+We use one or the other.
+*** 2.4.2 Tagged data
+"principle of less commitment"
+Use 2 data representations for same data abstraction -> type-tag.
+#+BEGIN_SRC Scheme
+(define (attach-tag type-tag contents)
+  (cons type-tag contents))
+
+(define (type-tag datum)
+  (if (pair? datum)
+      (car datum)
+      (error "Bad tagged datum: TYPE-TAG" datum)))
+
+(define (contents datum)
+  (if (pair? datum)
+      (cdr datum)
+      (error "Bad tagged datum: CONTENTS" datum)))
+
+#+END_SRC
+abstract-data interface
+
+*** 2.4.3 Data-Directed Programming and Additivity
+#+BEGIN_QUOTE
+The general strategy of checking the type of a datum and calling an
+appropriate procedure is called dispatching on type
+#+END_QUOTE
+
+data-direct programming
+
+table operations / types
+(put <op> <type> <item>) install
+(get <op> <type>) look updated
+
+message passing
